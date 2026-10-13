@@ -78,3 +78,9 @@ resource "aws_route_table_association" "rta_b" {
   subnet_id      = aws_subnet.mysubnet_b.id
   route_table_id = aws_route_table.routetable.id
 }
+
+resource "aws_ec2_instance_connect_endpoint" "endpoint" {
+  subnet_id          = aws_subnet.mysubnet_a.id
+  security_group_ids = [aws_security_group.endpoint.id]
+  preserve_client_ip = false
+}
