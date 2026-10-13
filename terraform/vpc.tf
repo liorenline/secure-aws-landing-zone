@@ -26,9 +26,9 @@ resource "aws_subnet" "mysubnet_b" {
 }
 
 resource "aws_network_interface" "networkInterface" {
-  subnet_id   = aws_subnet.mysubnet_a.id
-  private_ips = ["10.0.1.100"]
-  security_groups = [aws_security_group.allow_tls.id, aws_security_group.allow_ssh.id]
+  subnet_id       = aws_subnet.mysubnet_a.id
+  private_ips     = ["10.0.1.100"]
+  security_groups = [aws_security_group.app-sg.id]
 
   tags = {
     Name = "primary_network_interface"
@@ -43,7 +43,7 @@ resource "aws_instance" "awsinstance" {
     network_interface_id = aws_network_interface.networkInterface.id
 
   }
-    tags = {
+  tags = {
     Name = "awsinstance"
   }
   depends_on = [aws_internet_gateway.internetgateaway]
