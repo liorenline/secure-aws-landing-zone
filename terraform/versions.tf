@@ -6,10 +6,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "secure-aws-466646844197"
-    key            = "my-project/terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
+    bucket       = "secure-aws-466646844197"
+    key          = "my-project/terraform.tfstate"
+    region       = "us-east-1"
+    encrypt      = true
     use_lockfile = true
   }
 }
